@@ -7,3 +7,7 @@ $
 $> ./expand_str "" | cat -e
 $
 $>
+
+
+kcc expand_str/expand_str.c && ./a.out "See? It's easy to print the same thing" | cat -e  && rm -rf a.out
+kcc expand_str/expand_str.c && ./a.out " this        time it      will     be    more complex  " | cat -e  && rm -rf a.out
