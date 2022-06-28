@@ -1,28 +1,40 @@
 #include <stdlib.h>
-#include <stdio.h>
 
-int	*ft_range(int start, int end)
+int     *ft_range(int start, int end)
 {
-	int	size;
-	int	*ret;
-	int	*ptr;
+	int i;
+	int len;
+	int *res;
 
-	size = end - start;
-	if (size)
+	if(start > end)
+		len = start - end;
+	else
+		len = end - start;
+	res = (int *) malloc((len + 1) * sizeof(int));
+	i = 0;
+	while(start != end)
 	{
-		ptr = (int *)malloc(sizeof(int) * size);
-		if (ptr)
-		{
-			ret = ptr;
-			while (start <= end)
-			{
-				*ptr = start;
-				ptr++;
-				start++;
-			}
-			return (ret);
-		}
+		res[i] = start;
+		start += (start > end) ? -1 : 1;
+		i++;
 	}
-	return (NULL);
+	res[i] = start;
+	return (res);
 }
 
+/*
+** #include <stdio.h>
+**
+** int main(void)
+** {
+** 	int i = 0;
+** 	int *res = ft_range(10, -10);
+**
+** 	while(i < 50)
+** 	{
+** 		printf("%d\n", res[i]);
+** 		i++;
+** 	}
+** 	return (0);
+** }
+*/
