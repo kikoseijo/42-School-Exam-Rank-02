@@ -1,6 +1,6 @@
 Assignment name  : ft_list_size
 Expected files   : ft_list_size.c, ft_list.h
-Allowed functions: 
+Allowed functions:
 --------------------------------------------------------------------------------
 
 Write a function that returns the number of elements in the linked list that's
@@ -18,3 +18,7 @@ typedef struct    s_list
     struct s_list *next;
     void          *data;
 }                 t_list;
+
+
+
+kcc ft_list_size/ft_list_size.c && ./a.out | cat -e  && rm -rf a.out
