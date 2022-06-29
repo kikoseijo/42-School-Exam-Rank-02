@@ -1,33 +1,39 @@
-// Passed Moulinette 2019.09.01
-
 #include <unistd.h>
 
-int		ft_atoi(char *str)
+int ft_atoi(char *str)
 {
-	int n = 0;
+	int i;
+	int res;
 
-	while (*str != '\0')
+	i = 0;
+	res = 0;
+	while(str[i] >= '0' && str[i] <= '9')
 	{
-		n = n * 10;
-		n = n + *str - '0';
-		++str;
+		res *= 10;
+		res += str[i] - '0';
+		i++;
 	}
-	return (n);
+	return (res);
 }
 
-void	print_hex(int n)
+void ft_print_hex(int n)
 {
-	char hex_digits[] = "0123456789abcdef";
-
-	if (n >= 16)
-		print_hex(n / 16);
-	write(1, &hex_digits[n % 16], 1);
+	char base[17] = "0123456789abcdef";
+	if(n > 15)
+		ft_print_hex(n / 16);
+	write(1, &base[n % 16], 1);
 }
 
-int		main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	if (argc == 2)
-		print_hex(ft_atoi(argv[1]));
-
+	if(argc == 2)
+		ft_print_hex(ft_atoi(argv[1]));
 	write(1, "\n", 1);
 }
+
+
+/*
+** kcc print_hex/print_hex.c && ./a.out | cat -e && rm -rf a.out
+** kcc print_hex/print_hex.c && ./a.out 255 | cat -e && rm -rf a.out
+** kcc print_hex/print_hex.c && ./a.out "5156454" | cat -e && rm -rf a.out
+*/
